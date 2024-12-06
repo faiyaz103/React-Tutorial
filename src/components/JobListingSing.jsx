@@ -1,6 +1,16 @@
 import React from 'react'
+import { useState } from 'react'
 
 const JobListingSing = ({job}) => {
+
+    const [showFullDesc, setFullDesc] = useState(false);
+
+    let desc=job.description;
+
+    if(!showFullDesc){
+        desc = desc.substring(0,90)+'...';
+    }
+
   return (
     <>
     <div className="bg-white rounded-xl shadow-md relative">
@@ -10,7 +20,11 @@ const JobListingSing = ({job}) => {
                 <h3 className="text-xl font-bold">{job.title}</h3>
               </div>
 
-              <div className="mb-5">{job.description}</div>
+              <div className="mb-5">{desc}</div>
+
+              <button className="text-indigo-500 mb-5 hover:text-indigo-600">
+                {showFullDesc ? 'Less' : 'More'}
+              </button>
 
               <h3 className="text-indigo-500 mb-2">{job.salary} / Year</h3>
 
