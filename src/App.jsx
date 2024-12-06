@@ -9,6 +9,7 @@ const App = () => {
     <Navigation/>
 
     {/* <!-- Hero --> */}
+    {/* <Hero title='This is a title' sub='This is a subtitle' /> */}
     <Hero/>
 
     {/* <!-- Developers and Employers --> */}
