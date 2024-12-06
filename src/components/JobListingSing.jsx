@@ -22,7 +22,10 @@ const JobListingSing = ({job}) => {
 
               <div className="mb-5">{desc}</div>
 
-              <button className="text-indigo-500 mb-5 hover:text-indigo-600">
+              <button 
+              onClick={()=>setFullDesc((prevState)=>
+              !prevState)}
+              className="text-cyan-500 mb-5 hover:text-indigo-600">
                 {showFullDesc ? 'Less' : 'More'}
               </button>
 
