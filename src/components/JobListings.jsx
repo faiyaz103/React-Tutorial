@@ -1,11 +1,34 @@
 import React from 'react'
-import jobs from '../jobs.json'
+import { useState, useEffect  } from 'react';
 import JobListingSing from './JobListingSing';
 
 const JobListings = ({isHome = false}) => {
   
     // const jobListings=jobs.slice(0,3); //First 3 job will be shown
-    const jobListings = isHome ? jobs.slice(0,3) : jobs;
+    // const jobListings = isHome ? jobs.slice(0,3) : jobs;
+    const [jobs, setJobs] = useState([]); //Empty array by default
+    const [loading, setLoading] = useState(true); //For spinner
+
+    useEffect(()=>{
+        //Function Declaration
+        const fetchJobs = async()=>{
+            try {
+                
+                const res = await fetch('http://localhost:8000/jobs');
+                const data = await res.json();
+                setJobs(data);
+
+            } catch (error) {
+                console.log('Error fetching data', error);
+            } finally{
+                setLoading(false);
+            }
+        }
+
+        //Function Calling
+        fetchJobs();
+
+    }, []);
 
   return (
     <>
@@ -17,7 +40,7 @@ const JobListings = ({isHome = false}) => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
             {/* <!-- Job Listing --> */}
-          {jobListings.map((job) =>(
+          {jobs.map((job) =>(
             <JobListingSing key={job.id} job={job}/>
           ))}
           
