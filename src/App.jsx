@@ -16,14 +16,14 @@ import ViewAllJobs from './components/ViewAllJobs';
 import MainLayout from './layouts/MainLayout';
 import JobsPage from './pages/JobsPage';
 import NotFoundPage from './pages/NotFoundPage';
-import JobPageSing from './pages/JobPageSing';
+import JobPageSing , {jobLoader} from './pages/JobPageSing';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<MainLayout/>}>
             < Route index element={<HomePage/>} />
             < Route path='/jobs' element={<JobsPage/>} />
-            < Route path='/jobs/:id' element={<JobPageSing/>} />
+            < Route path='/jobs/:id' element={<JobPageSing/>} loader={jobLoader} />
             < Route path='*' element={<NotFoundPage/>} />
         </Route>
     )
