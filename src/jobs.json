@@ -83,20 +83,6 @@
         "contactEmail": "contact@ipsumlorem.com",
         "contactPhone": "555-555-5555"
       }
-    },
-    {
-      "id": "b218",
-      "title": "Laravel Developer",
-      "type": "Remote",
-      "location": "Dhaka, Bangladesh",
-      "description": "Full Stack Laravel Developer",
-      "salary": "$60K - 70K",
-      "company": {
-        "name": "ABC Tech",
-        "description": "Nice and Attractive !",
-        "contactEmail": "abc@email.com",
-        "contactPhone": "1234567"
-      }
     }
   ]
 }
