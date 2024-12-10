@@ -3,10 +3,25 @@ import { FaArrowLeft } from 'react-icons/fa';
 import { useParams, useLoaderData } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { FaMapMarker } from 'react-icons/fa';
-const JobPageSing = () => {
+import { useNavigate } from 'react-router-dom';
+
+const JobPageSing = ({deleteJob}) => {
 
     // const {id} = useParams();
     const job=useLoaderData();
+    const nav=useNavigate();
+
+    const onDeleteClick=(jobId)=>{
+        const confirm=window.confirm('Are you sure ?');
+
+        if(!confirm){
+            return;
+        }
+
+        deleteJob(jobId);
+
+        return nav('/jobs');
+    }
 
   return (
     <>
@@ -92,7 +107,7 @@ const JobPageSing = () => {
                 to={`/jobs/edit/${job.id}`}
                 className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                 >Edit Job</Link>
-              <button
+              <button onClick={()=> onDeleteClick(job.id)}
                 className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
               >
                 Delete Job
