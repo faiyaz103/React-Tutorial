@@ -8,7 +8,6 @@ export default defineConfig({
     react(),
     tailwindcss()
   ],
-  base: "/React-Tutorial/",
   server: {
     port: 3000
   }
